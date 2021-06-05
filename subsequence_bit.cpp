@@ -1,3 +1,4 @@
+//in this question we have to find out the subsequence of the given character array
 #include<bits/stdc++.h>
 using namespace std;
 

@@ -1,3 +1,4 @@
+// in this question we have to find the the unique number among the array of triplets
 #include<bits/stdc++.h>
 using namespace std;
 

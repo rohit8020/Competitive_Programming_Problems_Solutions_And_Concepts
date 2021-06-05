@@ -55,7 +55,7 @@ int main()
   long long int arr[1000];
   long long int n,noToCheck;
   cin>>n;               //enter no. of elements you want to insert in the array
-  cin>>noToCheck;       //enter the number upto you want to check
+  cin>>noToCheck;       //enter the number upto which you want to check
   for (long long int i = 0; i < n; i++)
   {
       cin>>arr[i];
