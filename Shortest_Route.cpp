@@ -10,45 +10,96 @@ int main()
     while (t--)
     {
         ll n,m;
-        ll temp,arrM[1000000];
-        map<int,int,greater<int>> m1;
-        map<int,int> m2; 
+        vector<ll> trains;
+        vector<ll> destinations;
+        trains.reserve(1000000);
+        destinations.reserve(1000000);
         cin>>n>>m;
         for (ll i = 0; i < n; i++)
         {
+            ll temp;
             cin>>temp;
-            if(temp==1)m1.insert(make_pair(i,1));
-            if(temp==2)m2.insert(make_pair(i,2));
+            trains.push_back(temp);
         }
         for (ll i = 0; i < m; i++)
         {
-            cin>>arrM[i];
+            ll temp;
+            cin>>temp;
+            destinations.push_back(temp);
+        }
+        vector<ll> right,left,minTime,answer;
+        right.reserve(1000000);
+        left.reserve(1000000);
+        minTime.reserve(1000000);
+        answer.reserve(10000);
+        ll counter=-1;
+        bool flag=false;
+        for (ll i = 0; i < n; i++)
+        {
+            if(trains[i]==1){
+                right.push_back(0);
+                counter=0;
+                flag=true;
+            }else{
+                right.push_back(counter);
+            }
+            if(flag)
+            counter++;
+        }
+        counter=-1;
+        flag=false;
+        for (ll i = n-1; i >= 0; i--)
+        {
+            if(trains[i]==2){
+                left[i]=0;
+                counter=0;
+                flag=true;
+            }else{
+                left[i]=counter;    
+            }
+            if(flag)
+            counter++;
+        }
+        left[0]=0;
+        right[0]=0;
+        
+        for (ll i = 0; i < n; i++)
+        {
+            if(left[i]==-1&&right[i]==-1){
+                minTime.push_back(-1);
+            }else if(min(left[i],right[i])==-1){
+                minTime.push_back(max(left[i],right[i]));
+            }else{
+                minTime.push_back(min(left[i],right[i]));
+            }
+        }
+        
+        for (ll i = 0; i < m; i++)
+        {
+            answer.push_back(minTime[destinations[i]-1]);
         }
         for (ll i = 0; i < m; i++)
         {
-            auto im1=m1.begin();
-            for (; im1!=m1.end() ; im1++)
-            {
-                if(((arrM[i]-1)-(im1->first))>=0)
-                break;
-            }
-
-            auto im2=m2.begin();
-            for (; im2!=m2.end() ; im2++)
-            {
-                if(((im2->first)-(arrM[i]-1))>=0)
-                break;
-            }
-            if(im1 == m1.end() && im2==m2.end())
-            cout<<-1<<" ";
-            else if(im1 == m1.end() && im2!=m2.end())
-            cout<<((arrM[i]-1)-im2->first)<<" ";
-            else if(im1 != m1.end() && im2==m2.end())
-            cout<<((arrM[i]-1)-im1->first)<<" ";
-            else
-            cout<<(min(((im2->first)-(arrM[i]-1)),((arrM[i]-1)-im1->first)))<<" ";
+            cout<<answer[i]<<" ";
         }
         cout<<endl;
     }
     return 0;
 }
+
+// for (ll i = 0; i < n; i++)
+        // {
+        //     cout<<right[i]<<" ";
+        // }
+        // cout<<endl;
+        // for (ll i = 0; i < n; i++)
+        // {
+        //     cout<<left[i]<<" ";
+        // }
+        // cout<<endl;
+
+// for (ll i = 0; i < n; i++)
+        // {
+        //     cout<<minTime[i]<<" ";
+        // }
+        // cout<<endl;
