@@ -1,5 +1,4 @@
-while (ptr != NULL)
+or (int i = 0; i < 4; i++)
     // {
-    //     ptr=mystrtok(NULL,' ');
-    //     cout<<ptr<<endl;
+    //     cout<<str1[i]<<endl;
     // }

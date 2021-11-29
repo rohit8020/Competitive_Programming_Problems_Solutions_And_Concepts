@@ -55,15 +55,15 @@ int main()
     while (i1<=i2&&j1<=j2)
     {
         printRow(arr,i1,i2,i);
-        printColumn(arr,j1+1,j2,j);
-        printRowReverse(arr,i2-1,i1,j);
-        printColumnReverse(arr,j2-1,j1,i);
-        i1++;
-        i2--;
         j1++;
+        printColumn(arr,j1,j2,j);
+        i2--;
+        printRowReverse(arr,i2,i1,j);
         j2--;
+        printColumnReverse(arr,j2,j1,i);
+        i1++;
         i++;
-        j++;
+        j--;
     }
     
     return 0;
