@@ -2,32 +2,40 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-void factorial100(int arr[],int n){
+void multiply(int *a,int &n,int num){
+
+    int carry = 0;
+    for (int i = 0; i < n; i++)
+    {
+        int product = a[i]*num+carry;
+        a[i]=product%10;
+        carry=product/10;
+    }
+
+    while (carry)
+    {
+        a[n]=carry%10;
+        carry=carry/10;
+        n++;
+    } 
+}
+
+int bigFactorial(int n,int arr[]){
+    // int *a=new int[10000];
+    // for (int i = 0; i < 10000; i++)
+    // {
+    //     a[i]=0;
+    // }
     
-    arr[1]=1;
+    arr[0]=1;
+    int len=1;
 
     for (int i = 2; i <= n; i++)
     {
-        int index=1;
-        int carry=0;
-        int rem=0;
-        int div=0;
-
-        while (true)
-        {
-            int mul=arr[index]*i;
-
-            int rem=mul%10;
-            int div=mul/10;
-            
-            if(div>0){
-                arr[index]=rem;
-            }
-
-        }
-        
+        multiply(arr,len,i);
     }
     
+    return len;
 }
 
 int main()
@@ -35,7 +43,17 @@ int main()
     int n;
     int arr[1000000]={0};
     cin>>n;
-    
-    factorial100(arr,n);
+    stack<int> s;
+    int len=bigFactorial(n,arr);
+
+    for(int i=0;i<len;i++){
+        s.push(arr[i]);
+    }
+
+    for(int i=0;i<len;i++){
+        cout<<s.top();
+        s.pop();
+    }
+    cout<<endl;
     return 0;
 }
