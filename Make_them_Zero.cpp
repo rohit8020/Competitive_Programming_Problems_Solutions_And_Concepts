@@ -40,28 +40,43 @@ typedef multiset<ll> mseti;
 
 void rohit8020(){
     //code here
-    ll n,k;
-    in n>>k;
+    ll n;
+    in n;
 
-    while(k--){
-        ll temp=n%10;
-        if(temp){
-            n=n-1;
-        }else{
-            n=n/10;
-        }
+    vi nums;
+    bool arr[32]={false};
+    fr(i,0,n,1){
+        ll temp;
+        in temp;
+        nums.push_back(temp);
     }
+    
+    int pos=1;
+    fr(i,0,32,1){
+        fr(j,0,n,1){
+            if(!arr[i]){
+            arr[i]=nums[j]&pos;
+            }
+        }
+        pos*=2;
+    }
+    ll ans=0;
 
-    pt n nl;
+    fr(i,0,32,1){
+        if(arr[i])ans++;
+    }
     
-    
+    pt ans nl;
 }
 
 int main()
 {
-    
+    ll testcases;
+    cin>>testcases;
+    while (testcases--)
+    {
         rohit8020();
-    
+    }
 
  return 0;
 }

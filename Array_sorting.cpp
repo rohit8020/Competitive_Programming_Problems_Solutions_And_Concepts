@@ -37,31 +37,43 @@ typedef map<ll,ll> mpii;
 typedef set<ll> seti;
 typedef multiset<ll> mseti;
 
+ll gcd_arr(vector<ll>& arr, ll idx)
+{
+    if (idx == arr.size() - 1) {
+        return arr[idx];
+    }
+    ll a = arr[idx];
+    ll b = gcd_arr(arr, idx + 1);
+    return __gcd(a, b);
+}
 
 void rohit8020(){
     //code here
-    ll n,k;
-    in n>>k;
-
-    while(k--){
-        ll temp=n%10;
-        if(temp){
-            n=n-1;
-        }else{
-            n=n/10;
-        }
+    ll n;
+    in n;
+    vi v;
+    v.resize(n);
+    fr(i,0,n,1){
+    in v[i];
     }
 
-    pt n nl;
-    
-    
+    vi v1;
+    fr(i,0,n,1){
+        v1.pb(abs(v[i]-(i+1)));
+    }
+
+    pt gcd_arr(v1,0) nl;
+
 }
 
 int main()
 {
-    
+    ll testcases;
+    cin>>testcases;
+    while (testcases--)
+    {
         rohit8020();
-    
+    }
 
  return 0;
 }

@@ -38,30 +38,23 @@ typedef set<ll> seti;
 typedef multiset<ll> mseti;
 
 
+
 void rohit8020(){
     //code here
-    ll n,k;
-    in n>>k;
-
-    while(k--){
-        ll temp=n%10;
-        if(temp){
-            n=n-1;
-        }else{
-            n=n/10;
-        }
-    }
-
-    pt n nl;
-    
-    
+    ll total,a,b,c,d;
+    in total;
+    in a>>b>>c>>d ;
+    pt max({a,b,c,d}) nl;
 }
 
 int main()
 {
-    
+    ll testcases;
+    cin>>testcases;
+    while (testcases--)
+    {
         rohit8020();
-    
+    }
 
  return 0;
 }

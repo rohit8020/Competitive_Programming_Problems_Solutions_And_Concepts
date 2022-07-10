@@ -37,31 +37,61 @@ typedef map<ll,ll> mpii;
 typedef set<ll> seti;
 typedef multiset<ll> mseti;
 
+bool isValid(string oldPass){
+    ll len=oldPass.length();
+    bool u,l,s,n;
+    u=false;
+    l=false;
+    s=false;
+    n=false;
+    for(auto i:oldPass){
+        if(i>='A' and i<='Z')u=true;
+        if(i>='a' and i<='z')l=true;
+        if(i>='0' and i<='9')n=true;
+        if(i=='#' or i=='&' or i=='*' or i=='@')s=true;
+    }
+
+    if(s and u and n and l and len>=7)return true;
+
+    return false;
+}
 
 void rohit8020(){
     //code here
-    ll n,k;
-    in n>>k;
+    ll n;
+    in n;
+    string oldpass;
+    in oldpass;
 
-    while(k--){
-        ll temp=n%10;
-        if(temp){
-            n=n-1;
-        }else{
-            n=n/10;
-        }
+    if(isValid(oldpass)){
+        pt oldpass nl;
+        return;
     }
 
-    pt n nl;
+    char sym[]={'#','@','*','&'};
     
-    
+    while(true){
+    oldpass.push_back((char)(rand() % 26 + 65));
+    oldpass.push_back((char)(rand() % 26 + 97));
+    oldpass.push_back(sym[rand()%4]);
+    oldpass.push_back((rand()%9)+'0');
+    if(oldpass.length()<7)continue;
+    else break;
+    }
+    pt oldpass nl;
 }
 
 int main()
 {
-    
+    ll testcases;
+    cin>>testcases;
+    ll cas=1;
+    while (testcases--)
+    {
+        pt "Case #"<< cas <<": ";
         rohit8020();
-    
+        cas++;
+    }
 
  return 0;
 }

@@ -37,31 +37,41 @@ typedef map<ll,ll> mpii;
 typedef set<ll> seti;
 typedef multiset<ll> mseti;
 
+ll power(ll x, ll y)
+{
+    ll res = 1;     
+    x = x % mod; 
+    if (x == 0) return 0; 
+    while (y > 0)
+    {
+        if (y & 1)
+            res = (res*x) % mod;
+        y = y>>1;
+        x = (x*x) % mod;
+    }
+    return res;
+}
 
 void rohit8020(){
     //code here
-    ll n,k;
-    in n>>k;
+    ll n,x;
+    in n >> x;
+    ll ans=x;
+    ll temp=power(2,n-1);
+    ans= ((ans%mod) * (temp%mod))%mod;
 
-    while(k--){
-        ll temp=n%10;
-        if(temp){
-            n=n-1;
-        }else{
-            n=n/10;
-        }
-    }
-
-    pt n nl;
-    
-    
+    pt ans nl;
+       
 }
 
 int main()
 {
-    
+    ll testcases;
+    cin>>testcases;
+    while (testcases--)
+    {
         rohit8020();
-    
+    }
 
  return 0;
 }

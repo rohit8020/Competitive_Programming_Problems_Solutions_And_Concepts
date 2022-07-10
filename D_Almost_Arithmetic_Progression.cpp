@@ -39,20 +39,23 @@ typedef multiset<ll> mseti;
 
 
 void rohit8020(){
-    //code here
-    ll n,k;
-    in n>>k;
-
-    while(k--){
-        ll temp=n%10;
-        if(temp){
-            n=n-1;
-        }else{
-            n=n/10;
-        }
-    }
-
-    pt n nl;
+    
+	
+	for(int i=-1;i<=1;i++){
+        for(int j=-1;j<=1;j++){
+		    d=a[1]+j-a[0]-i;
+		    s=abs(i);
+	    	for(k=1;k<n;k++) {
+	    		x=abs(a[k]-(a[0]+i+k*d));
+	    		if(x>1) break;
+		    	s+=x;
+	    	}
+	    	if(k==n) mn=min(mn,s);
+	    }
+    } 
+        
+	cout<<(mn<1e9?mn:-1);
+}
     
     
 }

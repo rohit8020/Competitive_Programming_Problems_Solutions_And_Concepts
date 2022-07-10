@@ -40,28 +40,41 @@ typedef multiset<ll> mseti;
 
 void rohit8020(){
     //code here
-    ll n,k;
-    in n>>k;
+    ll n;
+    cin>>n;
+    ll i,a[n];
+    vector<ll>ad[n+1];
+    for(i=0;i<n;i++)
+      {
+            cin>>a[i];
+            ad[a[i]].push_back(i);
+      }
+      for(i=0;i<=n;i++)
+      ad[i].push_back(n-1);
+    ll cnt=0;
 
-    while(k--){
-        ll temp=n%10;
-        if(temp){
-            n=n-1;
-        }else{
-            n=n/10;
-        }
+    for(i=0;i<n;i++){
+        ll va=max(0ll,i-a[i]+1);
+        va=i-va+1;
+        ll ind=upper_bound(ad[a[i]].begin(),ad[a[i]].end(),i)-ad[a[i]].begin();
+        va+=min(i+a[i]-1,ind-1)-i;
+        cnt+=va-cnt+1;
     }
 
-    pt n nl;
+    cout<<cnt<<endl;
+    
     
     
 }
 
 int main()
 {
-    
+    ll testcases;
+    cin>>testcases;
+    while (testcases--)
+    {
         rohit8020();
-    
+    }
 
  return 0;
 }

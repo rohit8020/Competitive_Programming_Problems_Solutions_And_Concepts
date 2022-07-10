@@ -40,21 +40,34 @@ typedef multiset<ll> mseti;
 
 void rohit8020(){
     //code here
-    ll n,k;
-    in n>>k;
+    ll n;
+    in n;
+    vi v;
+    unordered_map<int,bool> mp;
+    v.resize(n);
 
-    while(k--){
-        ll temp=n%10;
-        if(temp){
-            n=n-1;
-        }else{
-            n=n/10;
+    fr(i,0,n,1){
+        in v[i];
+    }
+
+    reverse(all(v));
+
+    vi v1;
+    
+    fr(i,0,n,1){
+        if(mp[v[i]])continue;
+        else{
+            mp[v[i]] = true;
+            v1.pb(v[i]);
         }
     }
 
-    pt n nl;
-    
-    
+    reverse(all(v1));
+    pt v1.size() nl;
+    for(auto i:v1){
+        pt i <<" ";
+    }
+    cout<<endl;
 }
 
 int main()

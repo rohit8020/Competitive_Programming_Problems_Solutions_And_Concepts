@@ -27,6 +27,7 @@ typedef unsigned long long int  ull;
 #define rt return
 #define mx INT_MAX
 #define mn INT_MIN
+#define bits(numOfBits) __builtin_popcount(numOfBits)
 
 typedef pair<ll, ll> pii;
 typedef vector<ll> vi;
@@ -40,28 +41,22 @@ typedef multiset<ll> mseti;
 
 void rohit8020(){
     //code here
-    ll n,k;
-    in n>>k;
-
-    while(k--){
-        ll temp=n%10;
-        if(temp){
-            n=n-1;
-        }else{
-            n=n/10;
-        }
-    }
-
-    pt n nl;
-    
+    ll n;
+    in n;
+    ll b=bits(n);
+    if(n==0 or b==1)pt 0 nl;
+    else pt 1 nl;
     
 }
 
 int main()
 {
-    
+    ll testcases;
+    cin>>testcases;
+    while (testcases--)
+    {
         rohit8020();
-    
+    }
 
  return 0;
 }

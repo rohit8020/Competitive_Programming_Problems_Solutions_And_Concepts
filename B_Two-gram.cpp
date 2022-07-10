@@ -1,11 +1,11 @@
 #include<bits/stdc++.h>
 using namespace std;
-
+ 
 typedef long int l;
 typedef unsigned long int ul;
 typedef long long int ll;
 typedef unsigned long long int  ull;
-
+ 
 #define memst(a, b) memset(a, (b), sizeof(a))
 #define fr(i, j, k, in) for (ll i=j ; i<k ; i+=in)
 #define rfr(i, j, k, in) for (ll i=j ; i>=k ; i-=in)
@@ -27,7 +27,7 @@ typedef unsigned long long int  ull;
 #define rt return
 #define mx INT_MAX
 #define mn INT_MIN
-
+ 
 typedef pair<ll, ll> pii;
 typedef vector<ll> vi;
 typedef vector<string> vs;
@@ -36,32 +36,39 @@ typedef vector<vi> vvi;
 typedef map<ll,ll> mpii;
 typedef set<ll> seti;
 typedef multiset<ll> mseti;
-
-
+ 
+ 
 void rohit8020(){
     //code here
-    ll n,k;
-    in n>>k;
+    ll n;
+    string str;
+    in n >>str;
+    
+    ll res=0;
+    string ans;
 
-    while(k--){
-        ll temp=n%10;
-        if(temp){
-            n=n-1;
-        }else{
-            n=n/10;
+    fr(i,0,n-1,1){
+        ll curr=0;
+        fr(j,0,n-1,1){
+            if(str[i]==str[j] and str[i+1]==str[j+1]){
+                curr++;
+            }
+
+            if(curr>res){
+                res=curr;
+                ans=string(1,str[i])+string(1,str[i+1]);
+            }
         }
     }
 
-    pt n nl;
-    
-    
+    pt ans nl;
 }
-
+ 
 int main()
 {
     
         rohit8020();
-    
-
+ 
+ 
  return 0;
 }

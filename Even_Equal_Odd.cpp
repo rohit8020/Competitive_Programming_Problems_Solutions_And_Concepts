@@ -37,31 +37,72 @@ typedef map<ll,ll> mpii;
 typedef set<ll> seti;
 typedef multiset<ll> mseti;
 
+ll count2(ll n){
+    ll res=0;
+    while(n>0 and n%2==0){
+        n/=2;
+        res++;
+    }
+
+    return res;
+}
 
 void rohit8020(){
     //code here
-    ll n,k;
-    in n>>k;
+    ll n;
+    in n;
+    vi v;
+    v.resize(2*n);
+    fr(i,0,2*n,1){
+    in v[i];
+    }
 
-    while(k--){
-        ll temp=n%10;
-        if(temp){
-            n=n-1;
+    ll evens=0;
+    ll odds=0;
+
+    fr(i,0,2*n,1){
+        if(v[i]%2==0){
+            evens++;
         }else{
-            n=n/10;
+            odds++;
         }
     }
 
-    pt n nl;
-    
-    
+    if(evens==odds){
+        pt 0 nl;
+    }else if(odds>evens){
+        pt (odds-evens)/2 nl;
+    }else{
+        // sort(all(v));
+        vi v2;
+
+        ll ans=0;
+        fr(i,0,2*n,1){
+            if(v[i]%2 == 0)
+            v2.push_back(count2(v[i]));
+        }
+
+        sort(all(v2));
+
+        fr(i,0,v2.size(),1){
+            ans+=v2[i];
+            odds++;
+            evens--;
+            if(odds ==evens)break;
+        }
+
+        pt ans nl;
+    }
 }
 
 int main()
 {
-    
+    ll testcases;
+    cin>>testcases;
+    while (testcases--)
+    {
         rohit8020();
-    
+    }
 
  return 0;
 }

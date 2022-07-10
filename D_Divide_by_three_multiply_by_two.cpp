@@ -38,22 +38,32 @@ typedef set<ll> seti;
 typedef multiset<ll> mseti;
 
 
-void rohit8020(){
-    //code here
-    ll n,k;
-    in n>>k;
-
-    while(k--){
-        ll temp=n%10;
-        if(temp){
-            n=n-1;
-        }else{
-            n=n/10;
-        }
+ll count3(ll num){
+    ll ret=0;
+    while(num%3==0){
+        ret++;
+        num/=3;
     }
 
-    pt n nl;
-    
+    return ret;
+}
+
+void rohit8020(){
+    //code here
+    ll n;
+    in n;
+    vii v;
+    v.resize(n);
+    fr(i,0,n,1){
+        in v[i].second;
+        v[i].first=-count3(v[i].second);
+    }
+
+    sort(all(v));
+
+    fr(i,0,n,1){
+        pt v[i].second <<" ";
+    }
     
 }
 

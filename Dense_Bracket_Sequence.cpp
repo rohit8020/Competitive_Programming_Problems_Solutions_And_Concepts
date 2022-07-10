@@ -39,29 +39,59 @@ typedef multiset<ll> mseti;
 
 
 void rohit8020(){
-    //code here
-    ll n,k;
-    in n>>k;
+    ll n;
+    in n;
 
-    while(k--){
-        ll temp=n%10;
-        if(temp){
-            n=n-1;
-        }else{
-            n=n/10;
-        }
+    string str;
+    in str;
+
+	vi openning;
+    vi closing;
+
+    openning.resize(n);
+    closing.resize(n);
+
+    fr(i,0,n,1){
+        closing[i]=0;
     }
 
-    pt n nl;
-    
-    
+    fr(i,0,n,1){
+        openning[i]=0;
+    }
+
+	fr(i,0,n,1){
+		if('('==str[i]){
+            ++openning[i];
+        } 
+		if(0 < i){
+            openning[i]= openning[i]+openning[i-1];
+        }
+	}
+
+	ll result = n+1;
+	rfr(i,n-1,0,1){
+		if(')'==str[i]){
+            ++closing[i];
+        } 
+		if(n-1>i){
+            closing[i] =closing[i] + closing[i+1];
+        } 
+        ll temp1=2*min(openning[i],closing[i]);
+        ll temp2=n-temp1;
+		result = min(result,temp2);
+	}
+
+	pt result nl;
 }
 
 int main()
 {
-    
+    ll testcases;
+    cin>>testcases;
+    while (testcases--)
+    {
         rohit8020();
-    
+    }
 
  return 0;
 }

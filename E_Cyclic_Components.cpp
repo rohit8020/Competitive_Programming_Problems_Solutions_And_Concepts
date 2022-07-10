@@ -37,29 +37,57 @@ typedef map<ll,ll> mpii;
 typedef set<ll> seti;
 typedef multiset<ll> mseti;
 
+const int N = 200 * 1000 + 11;
+
+int n, m;
+int deg[N]={0};
+bool visited[N]={false};
+vector<int> comp;   //number of graphs
+vector<int> g[N]; //graph
+
+void dfs(int v) {
+	visited[v] = true;
+	comp.push_back(v);
+	
+	for (auto to : g[v])
+		if (!visited[to])
+			dfs(to);
+}
 
 void rohit8020(){
     //code here
-    ll n,k;
-    in n>>k;
+    int n,e;
+    in n >> e;
 
-    while(k--){
-        ll temp=n%10;
-        if(temp){
-            n=n-1;
-        }else{
-            n=n/10;
+    fr(i,1,e+1,1){
+        int x,y;
+        in x >>y;
+        g[x].pb(y);
+        g[y].pb(x);
+        deg[x]++;
+        deg[y]++;
+    }
+    int ans=0;
+    fr(i,1,n+1,1){
+        if(!visited[i]){
+            comp.clear(); //clear the previous graph
+            dfs(i);
+
+            bool hasCycle=true;
+            for(auto e:comp) hasCycle&=(deg[e]==2);
+            if(hasCycle){
+                ans++;
+            }
         }
     }
-
-    pt n nl;
     
+    pt ans nl;
     
 }
 
 int main()
 {
-    
+
         rohit8020();
     
 

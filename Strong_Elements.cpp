@@ -37,31 +37,89 @@ typedef map<ll,ll> mpii;
 typedef set<ll> seti;
 typedef multiset<ll> mseti;
 
+int gcd(int a, int b)
+{
+    if (a == 0)
+       return b;
+    if (b == 0)
+       return a;
+    if (a == b)
+        return a;
+    if (a > b)
+        return gcd(a-b, b);
+    return gcd(a, b-a);
+}
 
 void rohit8020(){
     //code here
-    ll n,k;
-    in n>>k;
+    ll n;
+    in n;
 
-    while(k--){
-        ll temp=n%10;
-        if(temp){
-            n=n-1;
+    vi v;
+    v.resize(n);
+
+    fr(i,0,n,1){
+        in v[i];
+    }
+
+    vi s;
+    s.resize(n);
+
+    vi p;
+    p.resize(n);
+
+    fr(i,0,n,1){
+        p[i]=0;
+    }
+
+    fr(i,0,n,1){
+        s[i]=0;
+    }
+
+    p[0]=v[0];
+    s[n-1]=v[n-1];
+
+    fr(i,1,n,1){
+        p[i]=gcd(p[i-1],v[i]);
+    }
+
+    rfr(i,n-2,0,1){
+        s[i]=gcd(s[i+1],v[i]);
+    }
+    
+    ll a=0;
+
+    if(s[1]!=1){
+        a=a+1;
+    }else{
+        a=a+0;
+    }
+
+    fr(i,1,n-1,1){
+        if(gcd(p[i-1],s[i+1])!=1){
+            a+=1;
         }else{
-            n=n/10;
+            a+=0;
         }
     }
 
-    pt n nl;
-    
-    
+    if(p[n-2]!=1){
+        a=a+1;
+    }else{
+        a=a+0;
+    }
+
+    pt a nl;
 }
 
 int main()
 {
-    
+    ll testcases;
+    cin>>testcases;
+    while (testcases--)
+    {
         rohit8020();
-    
+    }
 
  return 0;
 }
