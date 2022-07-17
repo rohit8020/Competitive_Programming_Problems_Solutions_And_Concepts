@@ -1,14 +1,14 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 typedef long int l;
 typedef unsigned long int ul;
 typedef long long int ll;
-typedef unsigned long long int  ull;
+typedef unsigned long long int ull;
 
 #define memst(a, b) memset(a, (b), sizeof(a))
-#define fr(i, j, k, in) for (ll i=j ; i<k ; i+=in)
-#define rfr(i, j, k, in) for (ll i=j ; i>=k ; i-=in)
+#define fr(i, j, k, in) for (ll i = j; i < k; i += in)
+#define rfr(i, j, k, in) for (ll i = j; i >= k; i -= in)
 #define rept(i, j) fr(i, 0, j, 1)
 #define rrept(i, j) rfr(i, j, 0, 1)
 #define all(cont) cont.begin(), cont.end()
@@ -20,10 +20,10 @@ typedef unsigned long long int  ull;
 #define eps 1e-9
 #define pi 3.1415926535897932384626433832795
 #define mod 1000000007
-#define nl <<"\n"
-#define pt cout<<
-#define sp <<" "<<
-#define in cin>>
+#define nl << "\n"
+#define pt cout <<
+#define sp << " " <<
+#define in cin >>
 #define rt return
 #define mx INT_MAX
 #define mn INT_MIN
@@ -33,34 +33,33 @@ typedef vector<ll> vi;
 typedef vector<string> vs;
 typedef vector<pii> vii;
 typedef vector<vi> vvi;
-typedef map<ll,ll> mpii;
+typedef map<ll, ll> mpii;
 typedef set<ll> seti;
 typedef multiset<ll> mseti;
 
+void rohit8020()
+{
+    // code here
+    ll a, b, c;
+    in a >> b >> c;
 
-void rohit8020(){
-    //code here
-    ll a,b,c;
-    in a >> b>> c;
+    ll temp = c / b;
+    ll temp2 = c % b;
+    ll ans = 0;
+    if (temp < a)
+    {
 
-    ll temp=c/b;
-    ll temp2=c%b;
-    ll ans=0;
-    if(temp<=a){
-        while(temp--){
-            ans+=(ll)(pow(b,2)+.5);
-        }
-        if(temp2>0){
-            ans+=(ll)(pow(temp2,2)+.5);
+        ans = (ll)b*b*temp;
+
+        if (temp2 != 0)
+        {
+            ans += (ll)temp2*temp2;
         }
         pt ans nl;
-    }else{
-        while(a--){
-            ans+=(ll)(pow(b,2)+.5);
-        }
-        if(temp2>0){
-            ans+=(ll)(pow(temp2,2)+.5);
-        }
+    }
+    else
+    {
+        ans = (ll)b*b*a;
         pt ans nl;
     }
 }
@@ -68,11 +67,11 @@ void rohit8020(){
 int main()
 {
     ll testcases;
-    cin>>testcases;
+    cin >> testcases;
     while (testcases--)
     {
         rohit8020();
     }
 
- return 0;
+    return 0;
 }
